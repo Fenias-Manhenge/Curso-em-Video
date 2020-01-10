@@ -122,7 +122,7 @@ public class SistemaBanco {
     public void escFich(){
         
         try{
-            File f = new File("Conta.DAT");
+            File f = new File("ContaBanco.DAT");
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
@@ -136,7 +136,7 @@ public class SistemaBanco {
     public void lerFich(){
         
         try{
-            File f = new File("Conta.DAT");
+            File f = new File("ContaBanco.DAT");
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
             
