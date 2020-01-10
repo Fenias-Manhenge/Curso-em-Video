@@ -58,15 +58,15 @@ public class SistemaBanco {
             System.out.println("INTRODUZA O SALDO: ");
             double saldo = t.nextDouble();
             
-            if(c.isStatus() == true){
+            if(c.getStatus() == true){
                 c.setSaldo(c.getSaldo() + saldo);
+                System.out.println("DEPOSITO FEITO COM SUCESSO \n");
+
             }else{
-                System.err.println("IMPOSSIVEL DEPOSITAR!");
+                System.err.println("IMPOSSIVEL DEPOSITAR!\n");
             }
             
             x.setElementAt(c, i);
-            
-            System.out.println("DEPOSITO FEITO COM SUCESSO \n");
         }
     }
     
@@ -79,7 +79,7 @@ public class SistemaBanco {
             System.out.println("INTRODUZA O SALDO: ");
             double saldo = t.nextDouble();
             
-            if(d.isStatus() == true){
+            if(d.getStatus() == true){
                 if(d.getSaldo() > saldo){
                     d.setSaldo(d.getSaldo() - saldo);
                     System.out.println("ENVIO FEITO COM SUCESSO!");
@@ -107,7 +107,7 @@ public class SistemaBanco {
                 valor = 20;
             }
             
-            if(e.isStatus() == true){
+            if(e.getStatus() == true){
                 if(e.getSaldo() > valor){
                     e.setSaldo(e.getSaldo() - valor);
                 }else{
@@ -122,31 +122,32 @@ public class SistemaBanco {
     public void escFich(){
         
         try{
-            File f = new File("ContaBanco.DAT");
+            File f = new File("ContaBanco.Dat");
             FileOutputStream fos = new FileOutputStream(f);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
             oos.writeObject(x);
             oos.close();
-        }catch(Exception d){
-            System.err.println(d.getMessage() + " ERRO!");
+        }catch(Exception e){
+            System.err.println(e.getMessage() + " ERRO!");
         }    
     }
     
     public void lerFich(){
         
         try{
-            File f = new File("ContaBanco.DAT");
+            File f = new File("ContaBanco.Dat");
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
             
             x = (Vector) ois.readObject();
             ois.close();
-        }catch(Exception d){
-            System.err.println(d.getMessage() + " ERRO!");
+        }catch(Exception e){
+            System.err.println(e.getMessage() + " ERRO!");
         }
         
     }
+    
     
     public SistemaBanco(){
         lerFich();

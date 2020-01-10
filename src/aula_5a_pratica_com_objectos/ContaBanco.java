@@ -4,8 +4,9 @@ package aula_5a_pratica_com_objectos;
  *
  * @author Fenias
  */
+import java.io.*;
 
-public class ContaBanco {
+public class ContaBanco implements Serializable{
 
     public int numConta;
     protected String tipo;
@@ -57,7 +58,7 @@ public class ContaBanco {
         this.saldo = saldo;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
