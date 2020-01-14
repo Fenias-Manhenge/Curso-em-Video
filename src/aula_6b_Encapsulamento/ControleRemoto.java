@@ -56,7 +56,7 @@ public class ControleRemoto implements Controlador{
         System.out.println("ESTA TOCANDO? " + this.getTocando());
         System.out.println("VOLUME: " + this.getVolume());
         for(int i = 0; i <= this.getVolume(); i+= 10) {
-            System.out.println("|||||"); 
+            System.out.printf("|||||"); 
         }
     }
 
@@ -67,9 +67,8 @@ public class ControleRemoto implements Controlador{
 
     @Override
     public void maisVolume() {
-        this.setVolume(this.getVolume() + 1);
+        this.setVolume(this.getVolume() + 3);
     }
-    
 
     @Override
     public void menosVolume() {
