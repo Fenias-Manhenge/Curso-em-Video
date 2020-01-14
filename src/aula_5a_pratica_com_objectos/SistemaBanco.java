@@ -14,28 +14,35 @@ public class SistemaBanco {
     Vector <ContaBanco> x = new Vector<>();
     
     public void abrirConta(){
-        ContaBanco a = new ContaBanco();
+        ContaBanco a;
+        
+        long numero;
         
         do{
-            System.out.printf("INTRODUZA O NRº DA CONTA: ");
-            a.setNumConta(t.nextInt());
-            System.out.printf("INTRODUZA O NOME: ");
-            a.setDono(t.next());
-            System.out.printf("INTRODUZA O TIPO DE CONTA: ");
-            a.setTipo(t.next());
-            System.out.printf("INTRODUZA O STATUS: ");
-            a.setStatus(t.nextBoolean());
-
-            if(a.getTipo().equalsIgnoreCase("CC")){
-                a.setSaldo(50);
-            }else if(a.getTipo().equalsIgnoreCase("CP")){
-                a.setSaldo(150);
-            } 
-            
-            x.addElement(a);
+            System.out.print("INTRODUZA O NRº DA CONTA: ");
+            numero = t.nextLong();
         
-            System.out.println("CONTA CRIADA COM SUCESSO! \n");
-        }while(a.getNumConta()>0);
+            if(numero > 0){
+                a = new ContaBanco();
+                a.setNumConta(numero);
+                System.out.printf("INTRODUZA O NOME: ");
+                a.setDono(t.next());
+                System.out.printf("INTRODUZA O TIPO DE CONTA: ");
+                a.setTipo(t.next());
+                System.out.printf("INTRODUZA O STATUS: ");
+                a.setStatus(t.nextBoolean());
+
+                if(a.getTipo().equalsIgnoreCase("CC")){
+                    a.setSaldo(50);
+                }else if(a.getTipo().equalsIgnoreCase("CP")){
+                    a.setSaldo(150);
+                } 
+
+                x.addElement(a);
+
+                System.out.println("CONTA CRIADA COM SUCESSO! \n");
+            }    
+        }while(numero>0);
         
     }
     
@@ -95,7 +102,7 @@ public class SistemaBanco {
             l = x.get(i);
             
             if(l.getNumConta() == num){
-                System.out.println("O SEU SALDO E: " + l.getSaldo());
+                System.out.println("O SEU SALDO E: " + l.getSaldo() + "\n");
             }
         }    
                     
@@ -149,6 +156,7 @@ public class SistemaBanco {
                 if(e.getStatus() == true){
                     if(e.getSaldo() > valor){
                         e.setSaldo(e.getSaldo() - valor);
+                        System.out.println("PAGAMENTO MENSAL FEITO COM SUCESSO!");
                     }else{
                         System.out.println("IMPOSSIVEL RETIR SALDO...SALDO INSUFICIENTE!");
                     }
@@ -156,6 +164,18 @@ public class SistemaBanco {
                     System.out.println("IMPOSSIVEL PAGAR!");
                 }
         }    
+    }
+    
+    public boolean noRepetition(int numConta){
+        boolean hasCode = false;
+        
+        for (int i = 0; i < x.size(); i++) {
+            if(x.get(i).getNumConta() == numConta){
+                hasCode = true;
+                System.err.println("NUMERO DE CONTA JA EXISTENTE!");
+            }
+        }
+        return hasCode;
     }
     
     public void escFich(){
