@@ -65,14 +65,14 @@ public class Lutador {
 
     public void setPeso(double peso) {
         this.peso = peso;
-        this.setCategoria(categoria);
+        this.setCategoria();
     }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria() {
         if(this.peso < 52.2){
             this.categoria = "INVALIDA";
         }else if(this.peso <= 70.3){
@@ -110,4 +110,34 @@ public class Lutador {
         this.empates = empates;
     }
     
+    public void ganharLuta(){
+        this.setVitorias(this.getVitorias() + 1);
+    }
+    
+    public void perderLuta(){
+        this.setDerotas(this.getDerotas() + 1);
+    }
+    
+    public void empatarLuta(){
+        this.setEmpates(this.getEmpates()+ 1);
+    }
+    
+    public void apresentar(){
+        System.out.println("Lutador: " + this.getNome());
+        System.out.println("Origem: " + this.getNacionalidade());
+        System.out.println(this.getIdade() + " anos");
+        System.out.println(this.getAltura() + "m de altura!");
+        System.out.println("Pesando " + this.getPeso() + "Kg");
+        System.out.println("Ganhou: " + this.getVitorias());
+        System.out.println("Perdeu: " + this.getDerotas());
+        System.out.println("Empatou: " + this.getEmpates());
+    }
+    
+    public void status(){
+        System.out.println(this.getPeso());
+        System.out.println("é um peso " + this.getCategoria());
+        System.out.println(this.getVitorias() + " vitorias");
+        System.out.println(this.getDerotas() + " derotas");
+        System.out.println(this.getEmpates() + " empates");
+    }
 }
