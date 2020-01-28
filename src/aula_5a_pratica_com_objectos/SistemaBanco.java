@@ -22,12 +22,12 @@ public class SistemaBanco {
             System.out.print("INTRODUZA O NRº DA CONTA: ");
             numero = t.nextLong();
         
-            if(numero > 0){
+            if(numero > 0 && noRepetition(numero) == false){
                 a = new ContaBanco();
                 a.setNumConta(numero);
                 System.out.printf("INTRODUZA O NOME: ");
                 a.setDono(t.next());
-                System.out.printf("INTRODUZA O TIPO DE CONTA: ");
+                System.out.println("INTRODUZA O TIPO DE CONTA: ");
                 a.setTipo(t.next());
                 System.out.printf("INTRODUZA O STATUS: ");
                 a.setStatus(t.nextBoolean());
@@ -58,7 +58,7 @@ public class SistemaBanco {
             if(b.getDono().equalsIgnoreCase(nome)){
                 if(b.getSaldo() > 0){
                     System.out.println("CONTA COM DINHEIRO! \n");
-                }else if(b.getSaldo() < 0){
+                }else if(b.getSaldo() <= 0){
                     System.out.println("CONTA EM DEBITO! \n");
                 }else{
                     b.setStatus(false);
@@ -166,7 +166,33 @@ public class SistemaBanco {
         }    
     }
     
-    public boolean noRepetition(int numConta){
+    public void transferir(){
+        ContaBanco k;
+        
+        System.out.println("INTRODUZA O NUMERO DA CONTA: ");
+        long num = t.nextLong();
+        System.out.println("INTRODUZA O NUMERO DA CONTA A SER TRANSFERIDO: ");
+        long num1 = t.nextLong();
+        System.out.println("INTRODUZA O VALOR A SER TRANSFERIDO: ");
+        long dinheiro = t.nextLong();
+        
+        for(int i = 0; i < x.size(); i++){
+            k = x.get(i);
+            if (k.getNumConta() == num){
+                k.setSaldo(k.getSaldo() - dinheiro);
+                
+                System.out.println("TRANSFERENCIA FEITA COM SUCESSO!");
+                
+                if (k.getNumConta() == num1){
+                    k.setSaldo(k.getSaldo() + dinheiro);
+                }
+            }
+            x.setElementAt(k, i);
+        }
+        
+    }
+    
+    public boolean noRepetition(long numConta){
         boolean hasCode = false;
         
         for (int i = 0; i < x.size(); i++) {
@@ -177,6 +203,7 @@ public class SistemaBanco {
         }
         return hasCode;
     }
+    
     
     public void escFich(){
         
@@ -221,7 +248,8 @@ public class SistemaBanco {
             System.out.println("4.VER SALDO...");
             System.out.println("5.SACAR DINHEIRO...");
             System.out.println("6.PAGAR MENSALIDADE...");
-            System.out.println("7.EXIT!");
+            System.out.println("7.TRANSFERIR DINHEIRO...");
+            System.out.println("8.EXIT!");
             
             int g = t.nextInt();
             
@@ -232,7 +260,8 @@ public class SistemaBanco {
                 case 4: verSaldo(); break;
                 case 5: sacar(); escFich(); break;
                 case 6: pagarMensal(); escFich(); break;
-                case 7: System.exit(0);
+                case 7: transferir(); escFich(); break;
+                case 8: System.exit(0);
             }
         }while(true);
     }
