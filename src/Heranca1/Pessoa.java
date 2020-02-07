@@ -5,9 +5,9 @@ package Heranca1;
  * @author Fenias
  */
 public abstract class Pessoa {
-    private String nome;
-    private int idade;
-    private char sexo;
+    protected String nome;
+    protected int idade;
+    protected char sexo;
 
     public Pessoa() {
         
