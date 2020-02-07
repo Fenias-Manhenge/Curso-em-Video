@@ -6,6 +6,7 @@ package aula_5a_pratica_com_objectos;
  */
 import java.util.*;
 import java.io.*;
+import javax.swing.*;
 
 public class SistemaBanco {
     
@@ -27,11 +28,11 @@ public class SistemaBanco {
                 a.setNumConta(numero);
                 System.out.printf("INTRODUZA O NOME: ");
                 a.setDono(t.next());
-                System.out.println("INTRODUZA O TIPO DE CONTA: ");
-                a.setTipo(t.next());
                 System.out.printf("INTRODUZA O STATUS: ");
                 a.setStatus(t.nextBoolean());
-
+                System.out.print("INTRODUZA O TIPO DE CONTA: ");
+                a.setTipo( t.next() );
+                
                 if(a.getTipo().equalsIgnoreCase("CC")){
                     a.setSaldo(50);
                 }else if(a.getTipo().equalsIgnoreCase("CP")){
@@ -94,6 +95,7 @@ public class SistemaBanco {
     
     public void verSaldo(){
         ContaBanco l;
+        boolean tem = false;
         
         System.out.println("INTRODUZA O NUMERO DA CONTA: ");
         long num = t.nextLong();
@@ -101,11 +103,13 @@ public class SistemaBanco {
         for (int i = 0; i < x.size(); i++) {
             l = x.get(i);
             
+            tem = true;
+                    
             if(l.getNumConta() == num){
                 System.out.println("O SEU SALDO E: " + l.getSaldo() + "\n");
             }
         }    
-                    
+        if(!tem){JOptionPane.showMessageDialog(null, "SALDO", "CODIGO EXISTENTE!", 0);}
     }
     
     public void sacar(){
@@ -180,16 +184,17 @@ public class SistemaBanco {
             k = x.get(i);
             if (k.getNumConta() == num){
                 k.setSaldo(k.getSaldo() - dinheiro);
-                
-                System.out.println("TRANSFERENCIA FEITA COM SUCESSO!");
-                
-                if (k.getNumConta() == num1){
-                    k.setSaldo(k.getSaldo() + dinheiro);
-                }
+
+            }else if(k.getSaldo() < dinheiro){
+                     JOptionPane.showMessageDialog(null, "TRANSFERENCIA", "SALDO INSUFICIENTE PARA TRANSFERENCIA!" , 0);
             }
+            if (k.getNumConta() == num1){
+                k.setSaldo(k.getSaldo() + dinheiro);
+            }
+               
             x.setElementAt(k, i);
         }
-        
+         System.out.println("TRANSFERENCIA FEITA COM SUCESSO!");
     }
     
     public boolean noRepetition(long numConta){

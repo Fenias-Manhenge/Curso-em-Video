@@ -8,7 +8,7 @@ import java.io.*;
 
 public class ContaBanco implements Serializable{
 
-    public long numConta;
+    private long numConta;
     protected String tipo;
     private String dono;
     private double saldo;

@@ -10,6 +10,7 @@ public class EmojiUltraCombat {
         Lutador l[] = new Lutador[3];
         
         l[0] = new Lutador("Fenias", "Moçambicano", 17, 1.70f, 55.5, "Pesado", 6, 3, 1);
+        l[1] = new Lutador("eroc", "Brasileiro", 45, 2f, 88, "Leve", 5, 3, 1);
         
         l[0].apresentar();
         l[0].status();
