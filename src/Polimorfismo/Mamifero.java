@@ -6,6 +6,13 @@ package Polimorfismo;
  */
 public class Mamifero extends Animal{
     private String corPelo;
+
+    public Mamifero(String corPelo) {
+        this.corPelo = corPelo;
+    }
+
+    public Mamifero() {
+    }
     
     public void locomover(){
         System.out.println("Correndo!");

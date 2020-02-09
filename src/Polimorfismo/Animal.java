@@ -5,11 +5,11 @@ package Polimorfismo;
  * @author Fenias
  */
 public abstract class Animal {
-    protected double peso;
+    protected float peso;
     protected int idade;
     protected int membros;
 
-    public Animal(double peso, int idade, int membros) {
+    public Animal(float peso, int idade, int membros) {
         this.peso = peso;
         this.idade = idade;
         this.membros = membros;
@@ -18,15 +18,9 @@ public abstract class Animal {
     public Animal() {
     }
     
-    public void abstract locomover(){
+    public abstract void locomover();
         
-    }
+    public abstract void alimentar();
     
-    public void abstract alimentar(){
-        
-    }
-    
-    public void abstract emitirSom(){
-        
-    }
+    public abstract void emitirSom();
 }
