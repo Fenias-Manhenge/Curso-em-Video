@@ -30,4 +30,11 @@ public class Bolsista extends Aluno{
     public void pagarMensalidade(){
         System.out.println(this.nome + " é bolsista! Pagmento facilitado");
     }
+
+    @Override
+    public String toString() {
+        return "Bolsista{" + "bolsa=" + bolsa + ",\n Idade=" + this.idade + ",\n Sexo=" + this.getSexo() + 
+                    ",\n Curso=" + this.getCurso() + ",\n Matricula=" + this.getMatricula() +'}';
+    }
+    
 }

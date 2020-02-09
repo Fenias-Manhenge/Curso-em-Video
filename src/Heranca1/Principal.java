@@ -16,9 +16,18 @@ public class Principal {
         a1.pagarMensalidade();
         a1.setCurso("Informatica!");
         
-        //System.out.println(a1.toString());
+        System.out.println(a1.toString());
         
+        Bolsista b1 = new Bolsista();
         
+        b1.setNome("Gledse Jamisse");
+        b1.setIdade(18);
+        b1.setSexo('M');
+        b1.setMatricula(11260);
+        b1.pagarMensalidade();
+        b1.setCurso("Informatica!");
+        
+        System.out.println(b1.toString());
     }
     
 }
