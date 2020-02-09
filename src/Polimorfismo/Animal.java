@@ -26,7 +26,7 @@ public abstract class Animal {
         
     }
     
-    public void abstract locomover(){
+    public void abstract emitirSom(){
         
     }
 }
