@@ -6,7 +6,7 @@ package Heranca1;
  */
 public abstract class Pessoa {
     protected String nome;
-    protected int idade;
+    private int idade;
     protected char sexo;
 
     public Pessoa() {

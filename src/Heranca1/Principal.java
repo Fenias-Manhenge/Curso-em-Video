@@ -16,7 +16,9 @@ public class Principal {
         a1.pagarMensalidade();
         a1.setCurso("Informatica!");
         
-        System.out.println(a1.toString());
+        //System.out.println(a1.toString());
+        
+        
     }
     
 }
